@@ -2,7 +2,8 @@
 foundryvtt*.zip
 
 # IDE
-.vscode/
+.idea/
 
-# Docker Compose
-docker-compose.local.yaml
+# foundry directories
+data/
+foundry/

@@ -1,7 +1,7 @@
 FROM node:18-alpine
 
 RUN deluser node && \
-    mkdir -p /opt/foundryvtt/resources/app && \
+    mkdir /opt/foundryvtt && \
     mkdir /data && \
     mkdir /data/foundryvtt && \
     adduser --disabled-password fvtt && \
@@ -11,20 +11,9 @@ RUN deluser node && \
     chmod g+s /data/foundryvtt
 USER fvtt
 
-COPY --chown=fvtt run-server.sh /opt/foundryvtt
-RUN chmod +x /opt/foundryvtt/run-server.sh
-
-# Set permissions for the volumes
-USER root
-RUN chown -R fvtt:fvtt /data/foundryvtt && \
-    chown -R fvtt:fvtt /opt/foundryvtt/resources && \
-    chmod -R g+s /data/foundryvtt && \
-    chmod -R g+s /opt/foundryvtt/resources/app
-
-USER fvtt
+COPY --chown=fvtt run-server.sh /opt
+RUN chmod +x /opt/run-server.sh
 VOLUME /data/foundryvtt
-VOLUME /host
-VOLUME /opt/foundryvtt/resources/app
-EXPOSE 30000
+VOLUME /opt/foundryvtt
 
-ENTRYPOINT /opt/foundryvtt/run-server.sh
+ENTRYPOINT ["/opt/run-server.sh"]
