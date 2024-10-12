@@ -61,7 +61,13 @@ docker-compose up -d
 
 Navigate to your server in your webbrowser (by IP address, is recommended)
 
-`http://127.0.0.1:30000/`
+[http://127.0.0.1:30000/](http://127.0.0.1:30000/)
 
 Replace `127.0.0.1` with your own IP address.
+
+### Step 8 - Stop the server
+
+```shell
+docker-compose down
+```
 
