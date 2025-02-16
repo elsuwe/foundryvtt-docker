@@ -16,4 +16,4 @@ RUN chmod +x /opt/run-server.sh
 VOLUME /data/foundryvtt
 VOLUME /opt/foundryvtt
 
-ENTRYPOINT ["/opt/run-server.sh"]
+CMD ["sh", "/opt/run-server.sh"]
